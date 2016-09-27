@@ -1,6 +1,7 @@
 package android.com.inclass06;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by murali101002 on 9/26/2016.
@@ -65,8 +66,13 @@ public class Feed  implements Serializable, Comparable<Feed> {
 
     @Override
     public int compareTo(Feed another) {
-        if(this.getTitle().compareToIgnoreCase(another.getTitle())>0) return 1;
-        else if(this.getTitle().compareToIgnoreCase(another.getTitle())<0) return -1;
+        Date thisDate = new Date(this.getPubDate());
+        Date anotherDate = new Date(another.getPubDate());
+        if(thisDate.compareTo(anotherDate)>0) return 1;
+        else if(thisDate.compareTo(anotherDate)<0) return -1;
         return 0;
+//        if(this.getPubDate().compareToIgnoreCase(another.getPubDate())>0) return 1;
+//        else if(this.getPubDate().compareToIgnoreCase(another.getPubDate())<0) return -1;
+//        return 0;
     }
 }
